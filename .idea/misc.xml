@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_circle.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/drawable-v24/ic_dislike.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/drawable/ic_circle.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/drawable/ic_like.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_repository.xml" value="0.335" />

@@ -37,20 +37,21 @@
         app:layout_constraintBottom_toTopOf="@+id/stargazersCountText"
         app:layout_constraintStart_toEndOf="@+id/ownerProfileImageView"
         app:layout_constraintTop_toTopOf="@+id/ownerProfileImageView"
+        app:layout_constraintEnd_toStartOf="@id/likeButton"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/likeButton"-->
-    <!--        android:layout_width="42dp"-->
-    <!--        android:layout_height="42dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/dividerView"-->
-    <!--        android:layout_marginEnd="8dp"-->
-    <!--        tools:src="@drawable/ic_dislike"-->
-    <!--        android:scaleType="center"-->
-    <!--        app:tint="@color/red"-->
-    <!--        />-->
+        <ImageView
+            android:id="@+id/likeButton"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/dividerView"
+            android:layout_marginEnd="8dp"
+            tools:src="@drawable/ic_dislike"
+            android:scaleType="center"
+            app:tint="@color/red"
+            />
     <TextView
         android:id="@+id/stargazersCountText"
         android:layout_width="wrap_content"

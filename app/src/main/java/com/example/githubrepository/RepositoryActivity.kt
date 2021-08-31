@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import com.example.githubrepository.data.database.DatabaseProvider
 import com.example.githubrepository.data.entity.GithubRepoEntity
 import com.example.githubrepository.data.extensions.loadCenterInside
 import com.example.githubrepository.databinding.ActivityRepositoryBinding
@@ -17,6 +19,10 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
 
     val job = Job()
     private lateinit var binding: ActivityRepositoryBinding
+
+    private val repositoryDao by lazy {
+        DatabaseProvider.provideDB(applicationContext).repositoryDao()
+    }
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -79,7 +85,8 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
     private fun setData(githubRepoEntity: GithubRepoEntity) = with(binding) {
         showLoading(false)
         ownerProfileImageView.loadCenterInside(githubRepoEntity.owner.avatarUrl, 42f)
-        ownerNameAndRepoNameTextView.text = "${githubRepoEntity.owner.login}/${githubRepoEntity.name}"
+        ownerNameAndRepoNameTextView.text =
+            "${githubRepoEntity.owner.login}/${githubRepoEntity.name}"
         stargazersCountText.text = githubRepoEntity.stargazersCount.toString()
         githubRepoEntity.language?.let { language ->
             languageText.isGone = false
@@ -90,6 +97,47 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
         }
         descriptionTitleTextView.text = githubRepoEntity.description
         updateTimeTextView.text = githubRepoEntity.updatedAt
+
+        setLikeState(githubRepoEntity)
+    }
+
+    private fun setLikeState(githubRepoEntity: GithubRepoEntity) = launch {
+        withContext(Dispatchers.IO) {
+            val repository = repositoryDao.getRepository(githubRepoEntity.fullName)
+            val isLike = repository != null
+            withContext(Dispatchers.Main) {
+                setLikeImage(isLike)
+                binding.likeButton.setOnClickListener {
+                    likeGithubRepo(githubRepoEntity, isLike)
+                }
+            }
+        }
+    }
+
+    private fun setLikeImage(isLike: Boolean) {
+        binding.likeButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                if (isLike) {
+                    R.drawable.ic_like
+                } else {
+                    R.drawable.ic_dislike
+                }
+            )
+        )
+    }
+
+    private fun likeGithubRepo(githubRepoEntity: GithubRepoEntity, isLike: Boolean) = launch {
+        withContext(Dispatchers.IO) {
+            if (isLike) {
+                repositoryDao.remove(githubRepoEntity.fullName)
+            } else {
+                repositoryDao.insert(githubRepoEntity)
+            }
+            withContext(Dispatchers.Main) {
+                setLikeImage(isLike.not())
+            }
+        }
     }
 
 

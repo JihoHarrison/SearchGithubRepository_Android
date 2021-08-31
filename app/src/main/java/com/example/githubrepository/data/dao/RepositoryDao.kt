@@ -18,6 +18,12 @@ interface RepositoryDao {
     @Query("SELECT * FROM githubrepository")
     suspend fun getHistory() : List<GithubRepoEntity>
 
+    @Query("SELECT * FROM githubrepository WHERE fullName=:fullname")
+    suspend fun getRepository(fullname: String):GithubRepoEntity
+
+    @Query("DELETE FROM githubrepository WHERE fullName=:fullname")
+    suspend fun remove(fullname: String)
+
     @Query("DELETE FROM githubrepository")
     suspend fun clearAll()
 

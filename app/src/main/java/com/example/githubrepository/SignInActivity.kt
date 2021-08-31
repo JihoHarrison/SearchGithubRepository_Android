@@ -36,8 +36,6 @@ class SignInActivity : AppCompatActivity(), CoroutineScope {
             initViews()
         }
 
-
-
     }
 
     private fun initViews() = with(binding) {
