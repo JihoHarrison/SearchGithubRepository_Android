@@ -63,7 +63,7 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
         repositoryName: String
     ): GithubRepoEntity? =
         withContext(coroutineContext) {
-            var repositoryEntity: GithubRepoEntity? = null
+            var repository: GithubRepoEntity? = null
             withContext(Dispatchers.IO) {
                 val response = RetrofitUtil.githubApiService.getRepository(
                     ownerLogin = repositoryOwner,
@@ -73,13 +73,12 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
                     val body = response.body()
                     withContext(Dispatchers.Main) {
                         body?.let { repo ->
-                            repositoryEntity = repo
-//                            Log.e("updateAtResponse",repo.updateAt)
+                            repository = repo
                         }
                     }
                 }
             }
-            repositoryEntity
+            repository
         }
 
     private fun setData(githubRepoEntity: GithubRepoEntity) = with(binding) {
@@ -115,16 +114,13 @@ class RepositoryActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun setLikeImage(isLike: Boolean) {
-        binding.likeButton.setImageDrawable(
-            ContextCompat.getDrawable(
-                this,
-                if (isLike) {
-                    R.drawable.ic_like
-                } else {
-                    R.drawable.ic_dislike
-                }
-            )
-        )
+        binding.likeButton.setImageDrawable(ContextCompat.getDrawable(this@RepositoryActivity,
+            if (isLike) {
+                R.drawable.ic_like
+            } else {
+                R.drawable.ic_dislike
+            }
+        ))
     }
 
     private fun likeGithubRepo(githubRepoEntity: GithubRepoEntity, isLike: Boolean) = launch {
