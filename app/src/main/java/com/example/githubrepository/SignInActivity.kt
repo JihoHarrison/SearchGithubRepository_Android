@@ -19,7 +19,6 @@ class SignInActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var binding: ActivitySignInBinding
     val job: Job = Job()
 
-
     private val authTokenProvider by lazy { AuthTokenProvider(this) }
 
     override val coroutineContext: CoroutineContext
@@ -35,7 +34,6 @@ class SignInActivity : AppCompatActivity(), CoroutineScope {
         }else {
             initViews()
         }
-
     }
 
     private fun initViews() = with(binding) {
