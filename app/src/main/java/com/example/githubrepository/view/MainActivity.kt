@@ -1,15 +1,12 @@
-package com.example.githubrepository
+package com.example.githubrepository.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.view.isGone
 import com.example.githubrepository.data.database.DatabaseProvider
-import com.example.githubrepository.data.entity.GithubOwner
 import com.example.githubrepository.data.entity.GithubRepoEntity
 import com.example.githubrepository.databinding.ActivityMainBinding
-import com.example.githubrepository.view.RepositoryRecyclerAdapter
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.coroutines.CoroutineContext

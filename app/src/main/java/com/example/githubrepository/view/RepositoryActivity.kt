@@ -1,18 +1,21 @@
-package com.example.githubrepository
+package com.example.githubrepository.view
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import com.example.githubrepository.R
 import com.example.githubrepository.data.database.DatabaseProvider
 import com.example.githubrepository.data.entity.GithubRepoEntity
 import com.example.githubrepository.data.extensions.loadCenterInside
 import com.example.githubrepository.databinding.ActivityRepositoryBinding
+import com.example.githubrepository.utility.GithubApiService
+import dagger.hilt.android.AndroidEntryPoint
 import kevin.exam.github.utillity.RetrofitUtil
 import kotlinx.coroutines.*
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class RepositoryActivity : AppCompatActivity(), CoroutineScope {

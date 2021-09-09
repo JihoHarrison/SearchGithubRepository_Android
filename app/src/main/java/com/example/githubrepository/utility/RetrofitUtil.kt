@@ -42,7 +42,7 @@ object RetrofitUtil {
             ).client(buildOkHttpClient()).build()
     }
 
-    private fun buildOkHttpClient(): OkHttpClient {
+    fun buildOkHttpClient(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
             interceptor.level = HttpLoggingInterceptor.Level.BODY

@@ -1,4 +1,4 @@
-package com.example.githubrepository
+package com.example.githubrepository.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.core.view.isGone
 import com.example.githubrepository.data.entity.GithubRepoEntity
 import com.example.githubrepository.databinding.ActivitySearchBinding
-import com.example.githubrepository.view.RepositoryRecyclerAdapter
 import kevin.exam.github.utillity.RetrofitUtil
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

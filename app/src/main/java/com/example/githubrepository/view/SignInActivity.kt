@@ -1,4 +1,4 @@
-package com.example.githubrepository
+package com.example.githubrepository.view
 
 import android.content.Intent
 import android.net.Uri
@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.isGone
+import com.example.githubrepository.BuildConfig
 import com.example.githubrepository.databinding.ActivitySignInBinding
 import kevin.exam.github.utillity.AuthTokenProvider
 import kevin.exam.github.utillity.RetrofitUtil

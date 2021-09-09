@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubRepository">
         <activity
-            android:name=".RepositoryActivity"
+            android:name=".view.RepositoryActivity"
             android:exported="true" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".view.SearchActivity"
             android:exported="true" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".view.SignInActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true" />
     </application>
 
